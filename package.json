@@ -1,0 +1,33 @@
+{
+  "name": "js-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
+    "start:A": "webpack-dev-server --open --env.APP_TARGET VERSION_A",
+    "start:B": "webpack-dev-server --open --env.APP_TARGET VERSION_B",
+    "build:A": "webpack --env.APP_TARGET VERSION_A",
+    "build:B": "webpack --env.APP_TARGET VERSION_B"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-hot-middleware": "^2.24.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
