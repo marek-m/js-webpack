@@ -1,13 +1,15 @@
 const webpack = require('webpack');
 
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = function(env) {
-    const appTarget = env.APP_TARGET || 'VERSION_A';
+    const appTarget = env && env.APP_TARGET || 'VERSION_A';
     return {
         entry: './src/index.js',
         devServer: {
-            contentBase: './dist',
+            contentBase: path.join(__dirname, 'dist'),
             hot: true
         },
         output: {
@@ -15,6 +17,10 @@ module.exports = function(env) {
             path: path.resolve(__dirname, 'dist')
         },
         plugins: [
+            new CleanWebpackPlugin(['dist']),
+            new HtmlWebpackPlugin({
+                title: 'Output Management'
+            }),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NormalModuleReplacementPlugin(/(.*)-APP_TARGET(\.*)/, function(resource) {
                 resource.request = resource.request.replace(/-APP_TARGET/, `-${appTarget}`);
